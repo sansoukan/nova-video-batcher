@@ -1,10 +1,10 @@
 import os
 import requests
 from supabase import create_client, Client
-from dotenv import load_dotenv
 from supabase.lib.client_options import ClientOptions
 
-load_dotenv()
+# DEBUG
+print("DEBUG SUPABASE_URL =", os.environ.get("SUPABASE_URL"))
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
@@ -17,7 +17,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY, options=ClientOptio
 
 def get_question():
     try:
-        res = supabase.table("nova_questions")             .select("id, question_fr, video_question_fr")             .limit(100).execute()
+        res = supabase.table("nova_questions").select("id, question_fr, video_question_fr").limit(100).execute()
         for row in res.data:
             if not row.get("video_question_fr"):
                 return row
