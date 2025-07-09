@@ -3,9 +3,6 @@ import requests
 from supabase import create_client, Client
 from supabase.lib.client_options import ClientOptions
 
-# DEBUG
-print("DEBUG SUPABASE_URL =", os.environ.get("SUPABASE_URL"))
-
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 COLOSSYAN_API_KEY = os.getenv("COLOSSYAN_API_KEY")
